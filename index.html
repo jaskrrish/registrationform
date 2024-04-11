@@ -133,20 +133,38 @@
     .cssbuttons-io-button:active .icon {
         transform: scale(0.95);
     }
+    .cssbuttons-io-button.loading .button-text {
+  opacity: 0; /* Hide button text when loading */
+  transition: opacity 0.3s ease;
+}
+
+.cssbuttons-io-button.loading::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 8px solid #f3f3f3; /* Light gray border */
+  border-top-color: transparent; /* Transparent at top for animation */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 </style>
 
 
 <div class="event-container">
-    <p>
-        <b>Discover the future of technology at our exciting event happening on the 13th of April now in Tamil Nadu.
-            Geeks from Alan Turing Labs are bringing you a unique blend of app development, robotics, and drone
-            technology, designed especially for school and college students.</b>
-    </p>
-    <p>
-        <b>Unleash your creativity and explore the world of coding, robotics, and aerial innovation. Whether you're a
-            tech enthusiast or just curious about the latest trends, this event is for you!</b>
-    </p>
-    <p><b>Fill the below form to secure your seat:</b></p>
+
 
     <!-- Event Registration Form -->
     <form class="event-form" method="post">
@@ -204,47 +222,56 @@
         </div>
 
         <button type="submit" id="submit-form" class="cssbuttons-io-button">
-            Submit
+            <span class="button-text">Submit</span>
             <div class="icon">
-                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-                        fill="currentColor"></path>
-                </svg>
+              <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+              </svg>
             </div>
-        </button>
+          </button>
 
     </form>
     <script>
         document.querySelector('.event-form').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
+  event.preventDefault(); // Prevent the default form submission
 
-            // Get form data
-            const formData = new FormData(this); // 'this' refers to the form element itself
+  // Get form data
+  const formData = new FormData(this);
 
-            // Send the request with the JSON data
-            fetch('https://cors-anywhere-kbq1.onrender.com/https://script.google.com/macros/s/AKfycbyO_nrd7U0BH9eO-jl7BJzoo_IFRqyix4XV-160_64NtHZKlidl802fEa5elpi4irxx/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(Object.fromEntries(formData))
-            })
-                .then(response => {
-                    if (response.ok) {
-                        // Change button text and disable after successful form submission
-                        const submitButton = document.getElementById('submit-form');
-                        submitButton.textContent = 'Done! You are in';
-                        submitButton.disabled = true;
-                        console.log('Form data sent successfully!');
-                    } else {
-                        throw new Error('Network response was not ok.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error sending form data:', error);
-                });
-        });
+  // Button elements
+  const submitButton = document.getElementById('submit-form');
+  const buttonText = submitButton.querySelector('.button-text');
+
+  // Add loading class and animation
+  submitButton.classList.add('loading');
+
+  // Send the request with the JSON data
+  fetch('https://cors-anywhere-kbq1.onrender.com/https://script.google.com/macros/s/AKfycbyO_nrd7U0BH9eO-jl7BJzoo_IFRqyix4XV-160_64NtHZKlidl802fEa5elpi4irxx/exec', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(Object.fromEntries(formData))
+  })
+    .then(response => {
+      if (response.ok) {
+        // Success message and disable button after submission
+        submitButton.textContent = 'Done! You are in';
+        submitButton.disabled = true;
+        console.log('Form data sent successfully!');
+      } else {
+        throw new Error('Network response was not ok.');
+      }
+    })
+    .catch(error => {
+      console.error('Error sending form data:', error);
+      // Remove loading class in case of error (optional)
+      submitButton.classList.remove('loading');
+      buttonText.style.opacity = 1; // Show button text again
+    });
+});
+
 
 
 
