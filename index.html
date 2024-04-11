@@ -1,0 +1,256 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cool Events Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .event-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #007bff;
+    }
+
+    p {
+        font-size: 20px;
+        line-height: 1.6;
+        font-weight: normal;
+    }
+
+    .event-form {
+        margin-top: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .form-select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .submit-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #b583e8;
+        /* Light purple */
+        background-image: linear-gradient(to bottom right, #b583e8, #f36fbb);
+        /* Gradient to pink */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .submit-button:hover {
+        background-color: #f36fbb;
+        /* Pink */
+    }
+
+    .cssbuttons-io-button {
+        background: #a370f0;
+        color: white;
+        font-family: inherit;
+        padding: 0.35em;
+        padding-left: 1.2em;
+        font-size: 17px;
+        font-weight: 500;
+        border-radius: 0.9em;
+        border: none;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        box-shadow: inset 0 0 1.6em -0.6em #714da6;
+        overflow: hidden;
+        position: relative;
+        height: 2.8em;
+        padding-right: 3.3em;
+        cursor: pointer;
+    }
+
+    .cssbuttons-io-button .icon {
+        background: white;
+        margin-left: 1em;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.2em;
+        width: 2.2em;
+        border-radius: 0.7em;
+        box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+        right: 0.3em;
+        transition: all 0.3s;
+    }
+
+    .cssbuttons-io-button:hover .icon {
+        width: calc(100% - 0.6em);
+    }
+
+    .cssbuttons-io-button .icon svg {
+        width: 1.1em;
+        transition: transform 0.3s;
+        color: #7b52b9;
+    }
+
+    .cssbuttons-io-button:hover .icon svg {
+        transform: translateX(0.1em);
+    }
+
+    .cssbuttons-io-button:active .icon {
+        transform: scale(0.95);
+    }
+</style>
+
+
+<div class="event-container">
+    <p>
+        <b>Discover the future of technology at our exciting event happening on the 13th of April now in Tamil Nadu.
+            Geeks from Alan Turing Labs are bringing you a unique blend of app development, robotics, and drone
+            technology, designed especially for school and college students.</b>
+    </p>
+    <p>
+        <b>Unleash your creativity and explore the world of coding, robotics, and aerial innovation. Whether you're a
+            tech enthusiast or just curious about the latest trends, this event is for you!</b>
+    </p>
+    <p><b>Fill the below form to secure your seat:</b></p>
+
+    <!-- Event Registration Form -->
+    <form class="event-form" method="post">
+        <div class="form-group">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" class="form-input" required="">
+        </div>
+        <div class="form-group">
+            <label for="dob" class="form-label">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" class="form-input" required="">
+        </div>
+        <div class="form-group">
+            <label for="address" class="form-label">Address:</label>
+            <input type="text" id="address" name="address" class="form-input" required="">
+        </div>
+        <div class="form-group">
+            <label for="whatsapp" class="form-label">WhatsApp Mobile Number:</label>
+            <input type="tel" id="whatsapp" name="whatsapp" class="form-input" required="">
+        </div>
+        <div class="form-group">
+            <label for="email" class="form-label">Email ID:</label>
+            <input type="email" id="email" name="email" class="form-input" required="">
+        </div>
+        <div class="form-group">
+            <label for="education" class="form-label">Education Qualification:</label>
+            <select id="education" name="education" class="form-select" required="">
+                <option value="" disabled="" selected="">Select Education</option>
+                <option value="School">School</option>
+                <option value="College Student">College Student</option>
+                <option value="Working Professional">Working Professional</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="interests" class="form-label">Interests:</label>
+            <select id="interests" name="interests[]" class="form-select" required="">
+                <option value="App Development">App Development</option>
+                <option value="Robotics / Virtual Robotics">Robotics / Virtual Robotics</option>
+                <option value="Drone Technology">Drone Technology</option>
+                <option value="UI UX Development">UI UX Development</option>
+                <option value="AR / VR">AR / VR</option>
+                <option value="IOT - Internet of Things">IOT - Internet of Things</option>
+                <option value="AI - Artificial Intelligence">AI - Artificial Intelligence</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="career_guidance" class="form-label">Need Career Guidance?</label>
+            <select id="career_guidance" name="career_guidance" class="form-select" required="">
+                <option value="" disabled="" selected="">Select Option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <button type="submit" id="submit-form" class="cssbuttons-io-button">
+            Submit
+            <div class="icon">
+                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                        fill="currentColor"></path>
+                </svg>
+            </div>
+        </button>
+
+    </form>
+    <script>
+        document.querySelector('.event-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get form data
+            const formData = new FormData(this); // 'this' refers to the form element itself
+
+            // Send the request with the JSON data
+            fetch('https://cors-anywhere-kbq1.onrender.com/https://script.google.com/macros/s/AKfycbyO_nrd7U0BH9eO-jl7BJzoo_IFRqyix4XV-160_64NtHZKlidl802fEa5elpi4irxx/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Object.fromEntries(formData))
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Change button text and disable after successful form submission
+                        const submitButton = document.getElementById('submit-form');
+                        submitButton.textContent = 'Done! You are in';
+                        submitButton.disabled = true;
+                        console.log('Form data sent successfully!');
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error sending form data:', error);
+                });
+        });
+
+
+
+
+    </script>
+
+
+
+</div>
