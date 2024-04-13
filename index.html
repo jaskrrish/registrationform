@@ -221,6 +221,17 @@
                 <option value="No">No</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="place" class="form-label">Your Comfortable Place</label>
+            <select id="place" name="place" class="form-select" required="">
+                <option value="" disabled="" selected="">Select Option</option>
+                <option value="Tambaram">Tambaram</option>
+                <option value="Chromepet">Chromepet</option>
+                <option value="Perungalathur">Perungalathur</option>
+                <option value="O.M.R">O.M.R</option>
+                <option value="Chennai Beach">Chennai Beach</option>
+            </select>
+        </div>
 
         <button type="submit" id="submit-form" class="cssbuttons-io-button">
             <span class="button-text">Submit</span>
@@ -248,7 +259,7 @@
   submitButton.classList.add('loading');
 
   // Send the request with the JSON data
-  fetch('https://cors-anywhere-kbq1.onrender.com/https://script.google.com/macros/s/AKfycbyO_nrd7U0BH9eO-jl7BJzoo_IFRqyix4XV-160_64NtHZKlidl802fEa5elpi4irxx/exec', {
+  fetch('https://cors-anywhere-kbq1.onrender.com/https://script.google.com/macros/s/AKfycby1cXmlGzMhYg9JxVkPcUobOLoluiKeCkqtCxWBjP_mbVS9gXxXrkkTrQqczE1cRk7x/exec', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
