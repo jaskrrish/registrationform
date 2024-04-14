@@ -161,6 +161,12 @@
     text-transform: capitalize;
   }
 
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .hide {
     display: none;
   }
@@ -312,6 +318,7 @@
         const buttonText = submitButton.querySelector(".button-text");
 
         const form = document.querySelector(".event-form");
+        const eventContainer = document.querySelector(".event-container");
         const submittedSection = document.querySelector(".submitted-section");
         const submittedPerson = document.querySelector(".submitted-person");
         const person = document.querySelector("#name");
@@ -336,6 +343,7 @@
               submitButton.disabled = true;
               setTimeout(() => {
                 form.classList.add("hide");
+                eventContainer.classList.add("center");
                 submittedSection.classList.remove("hide");
               }, 1500);
               submittedPerson.textContent = person.value;
